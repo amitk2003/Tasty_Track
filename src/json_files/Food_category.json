@@ -1,0 +1,35 @@
+[
+    {
+        "categoryName":"Briyani/Rice"
+    },
+    {
+        "categoryName":"Non_veg Items"
+    },
+    {
+        "categoryName":"Veg Items"
+    },
+    {
+        "categoryName":"Starter"
+    },
+    {
+        "categoryName":"Broasted chicken"
+    },
+    {
+        "categoryName":"papad"
+    },
+    {
+        "categoryName":"samosa"
+    }, {
+        "categoryName":"pizza"
+    },
+
+    {
+        "categoryName":"Sweets"
+    },
+    {
+        "categoryName":"Icecream"
+    },
+    {
+        "categoryName":"cake"
+    }
+]

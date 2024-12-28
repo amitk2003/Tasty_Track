@@ -1,0 +1,359 @@
+[
+    {
+        
+        "categoryName":"Briyani/Rice",
+        "title":"Chicken briyani",
+        "img" : "/assets/images/chicken_briyani.jpg",
+        "options": [
+            {
+                "half": "100",
+                "full": "180"
+    
+    
+            }
+        ],
+        "description":"Chicken Biryani is a flavorful Indian rice dish made by layering marinated chicken with basmati rice and aromatic spices."
+    
+    },
+    {
+    
+    "categoryName":"Briyani/Rice",
+    "title":" Veg briyani",
+    "img" : "/assets/images/veg_briyani.jpg",
+    "options": [
+        {
+            "half": "80",
+            "full": "160"
+        }
+    ],
+    "description":"Veg Biryani is a fragrant Indian rice dish made with basmati rice, mixed vegetables, and aromatic spices."
+    
+    },
+    {
+        
+        "categoryName":"Non_veg Items",
+        "title":"Egg Masala",
+        "img" : "/assets/images/egg_masala.jpg",
+        "options": [
+            {
+                "half": "40",
+                "full": "80"
+            }
+        ],
+        "description":"Egg Masala is a spicy and flavorful Indian dish made with boiled eggs simmered in a rich, fragrant gravy of tomatoes, onions, and spices."
+        
+        },
+        {
+        "categoryName":"Non_veg Items",
+        "title":"Fish_curry",
+        "img" : "/assets/images/fish_curry.jpg",
+        "options": [
+            {
+                "half": "110",
+                "full": "230"
+            }
+        ],
+        "description":"Fish Curry is a tangy and spicy Indian dish made with fresh fish with spicy masala"    
+        },
+        {
+        
+        "categoryName":"Non_veg Items",
+        "title":"Fish_Fry",
+        "img" :"/assets/images/fish_fry.jpg",
+        "options": [
+            {
+                "half": "110",
+                "full": "200"
+            }
+        ],
+        "description":"Fish Fry is a savory dish where fish fillets are seasoned with spices, coated in flour or breadcrumbs, and shallow-fried until crispy and golden."    
+        },
+        {
+            
+            "categoryName":"Non_veg Items",
+            "title":"Chicken Tandoori",
+            "img" : "/assets/images/chicken_tandoori.jpg",
+            "options": [
+                {
+                    "half": "150",
+                    "full": "300"
+                }
+            ],
+            "description":"Chicken Tandoori is a popular Indian dish where marinated chicken is cooked in a tandoor (clay oven) or grill." 
+                    
+        },
+        {
+            
+            "categoryName":"Non_veg Items",
+            "title":"Chicken Handi",
+            "img" : "/assets/images/chicken handi.jpg",
+            "options": [
+                {
+                    "half": "160",
+                    "full": "280"
+                }
+            ],
+            "description":"Chicken Handi is a rich and flavorful Indian curry made with chicken simmered in a blend of spices, tomatoes, onions, and yogurt."    
+        },
+        
+        {
+            
+            "categoryName":"Non_veg Items",
+            "title":"Chicken Masala",
+            "img" : "/assets/images/chicken_masala.jpg",
+            "options": [
+                {
+                    "half": "160",
+                    "full": "280"
+                }
+            ],
+            "description":"Chicken masala is a rich and flavorful Indian curry made with chicken simmered in a blend of spices, tomatoes, onions, and yogurt."    
+        },
+        {
+           
+            "categoryName":"Veg Items",
+            "title":"Mushroom Masala",
+            "img" : "/assets/images/mushroom_masala.jpg",
+            "options": [
+                {
+                    "half": "130",
+                    "full": "210"
+                }
+            ],
+            "description":"Mushroom Masala is a flavorful Indian dish featuring mushrooms cooked in a spicy, aromatic gravy made with tomatoes, onions, and a blend of spices.."    
+        },
+        { 
+            
+            "categoryName":"Veg Items",
+            "title":"Mix Veg",
+            "img": "/assets/images/mix_veg.jpg",
+            "options": [
+                {
+                    "half": "50",
+                    "full": "108"
+                }
+            ],
+            "description":"It's a nutritious and colorful curry often enjoyed with rice, roti, or naan."    
+        },
+        {
+            
+            "categoryName":"Veg Items",
+            "title":"Dal Fry",
+            "img" :"/assets/images/dal_fry.jpg",
+            "options": [
+                {
+                    "half": "70",
+                    "full": "140"
+                }
+            ],
+            "description":"Dal Fry is a hearty Indian dish made with lentils cooked in a spiced commonly served with rice, roti, or naan."    
+        },
+        {   
+            
+            "categoryName":"Veg Items",
+            "title":"Chole Masala",
+            "img" : "/assets/images/chole_masala.jpg",
+            "options": [
+                {
+                    "half": "40",
+                    "full": "90"
+                }
+            ],
+            "description":"Chole Masala is a robust Indian dish made with chickpeas simmered in a rich, spiced tomato gravy."        
+        },
+        {
+            
+            "categoryName":"Veg Items",
+            "title":"Panner Masala",
+            "img" : "/assets/images/panner_m2.jpg",
+            "options": [
+                {
+                    "half": "70",
+                    "full": "150"
+                }
+            ],
+            "description":"Paneer Masala is a popular North Indian dish, widely loved for its flavorful and creamy texture, enjoyed in homes and restaurants across India and beyond."        
+        },
+        {
+            
+            "categoryName":"Starter",
+            "title":"Dry Manchurian",
+            "img" : "/assets/images/dry_manchurian.jpg",
+            "options": [
+                {
+                    "half": "80",
+                    "full": "150"
+                }
+            ],
+            "description":"Dry Manchurian is a popular Indo-Chinese dish featuring crispy, deep-fried vegetable or chicken balls  often served as a starter or appetizer."
+    
+        },
+        {
+            
+            "categoryName":"Starter",
+            "title":"Momos",
+            "img" : "/assets/images/momos.jpeg",
+            "options": [
+                {
+                    "half": "40",
+                    "full": "80"
+                }
+            ],
+            "description":"Momos are dumplings originating from Tibet, filled with a mixture of meat or vegetables and spices."
+            
+        },
+        {
+        
+            "categoryName":"Broasted chicken",
+            "title":"Broasted Chicken", 
+            "img" : "/assets/images/broasted_chicken.jpg",
+            "options": [
+                {
+                    "4 piece": "270",
+                    "8 piece": "560"
+                }
+            ],
+            "description":"Broasted Chicken is a method of cooking where chicken is marinated, breaded, and then pressure-fried."
+            
+        },
+        {
+            
+            "categoryName":"papad",
+            "title":"Papad Masala",
+            "img" : "/assets/images/papad_masala.jpg",
+            "options": [
+                {
+                    "medium": "60",
+                    "large": "80"
+                }
+            ],
+            "description":"Papad Masala is a flavorful Indian snack made from crispy papadums used as starter"
+            
+        },
+        {
+            
+            "categoryName":"samosa",
+            "title":"Samsoa",
+            "img" :"/assets/images/samsoa.jpg",
+            "options": [
+                {
+                    "2 piece": "30",
+                    "4 piece": "45"
+                }
+            ],
+            "description":"Samosa is a popular Indian snack consisting of a crispy, triangular pastry filled with a spiced mixture of potatoes, peas, and sometimes meat."
+            
+        },
+        {
+            
+            "categoryName":"pizza",
+            "title":"Pizza",
+            "img" : "/assets/images/pizza.avif",
+            "options": [
+                {
+                    "regular": "70",
+                    "medium": "180",
+                    "large":"230"
+                }
+            ],
+            "description":"Pizza is a globally loved Italian dish featuring a baked flatbread topped with tomato sauce, cheese, and a variety of toppings."
+            
+        },
+        {
+            
+            "categoryName":"pizza",
+            "title":"Burger",
+            "img" : "/assets/images/burger2.jpg",
+            "options": [
+                {
+                    "regular": "60",
+                    "medium": "80",
+                    "large":"110"
+                }
+            ],
+            "description":"Burger is a classic sandwich made with a patty, usually of beef or chicken, placed inside a bun and topped with ingredients like lettuce, cheese, tomatoes, and sauces."
+            
+        },
+        {
+            
+            "categoryName":"Sweets",
+            "title":"Rasogulla",
+            "img" :"/assets/images/rasogula.jpg",
+            "options": [
+                {
+                    "half_kg": "250",
+                    "full_kg": "500"
+                }
+            ],
+            "description":"Rasogula is one of finest and best sweets"
+            
+        },
+        {
+            
+            "categoryName":"Sweets",
+            "title":"Gulab_jamun",
+            "img" : "/assets/images/gulab_jamun.jpg",
+            "options": [
+                {
+                    "half_kg": "140",
+                    "full_kg": "290"
+                }
+            ],
+            "description":"Gulab Jamun is a sweet, soft dessert made of fried dough balls soaked in sugary syrup."
+            
+        },
+        {   
+            
+            "categoryName":"Sweets",
+            "title":"GajarHalwa",
+            "img" : "/assets/images/gajar_halwa.jpg",
+            "options": [
+                {
+                    "half_kg": "140",
+                    "full_kg": "290"
+                }
+            ],
+            "description":"Gajar Halwa is a traditional Indian dessert made from grated carrots, simmered with milk, sugar, and ghee, flavored with cardamom, and garnished with nuts."
+            
+        },
+        {
+            
+            "categoryName":"Sweets",
+            "title":"Jalebi",
+            "img": "/assets/images/jalebi.jpg",
+            "options": [
+                {
+                    "half_kg": "50",
+                    "full_kg": "90"
+                }
+            ],
+            "description":"Jalebi is a popular Indian sweet made by deep-frying a flour batter into spiral shapes, then soaking them in a sugary syrup."
+            
+        },
+        {
+        "categoryName":"Icecream",
+            "title":"icecream",
+            "img" : "/assets/images/icecream.jpg",
+            "options": [
+                {
+                    "250 gm": "50",
+                    "500 gm": "90"
+                }
+            ],
+            "description":" It comes in a variety of flavors and is often enjoyed as a treat on its own or paired with other desserts." 
+        },
+        {   
+            
+            "categoryName":"cake",
+            "title":"Pastery",
+            "img": "/assets/images/cake.jpeg",
+            "options": [
+                {
+                    "1 pound": "200",
+                    "2 pound": "500"
+                }
+            ],
+            "description":" It is commonly decorated with frosting and enjoyed for celebrations."
+        }
+        
+    ]
