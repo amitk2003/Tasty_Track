@@ -128,9 +128,9 @@ export default function Home() {
 
                         return (
                             <section key={category._id} className="category-section">
-                                <h2 className="fs-5 text-center" style={{color:"aqua"}}>{category.categoryName}</h2>
-                                <hr />
-                                <div className="row gx-4 gy-4">
+                                <h2 className="fs-1" style={{color:"aqua",textAlign:"center"}}>{category.categoryName}</h2>
+                                <hr style={{maxWidth:"2000px"}}/>
+                                <div className="row gx-4 gy-3" style={{marginTop:"-70px"}}>
                                     {categoryItems.length > 0 ? (
                                         categoryItems.map((filterItem) => (
                                             <div
