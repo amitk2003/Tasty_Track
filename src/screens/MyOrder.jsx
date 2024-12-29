@@ -41,7 +41,7 @@ export default function MyOrder() {
               <div className='col-12 my-4' key={index}>
                 {/* Date Header */}
                 {array_data[0]?.Order_date && (
-                  <div className='m-auto mb-3'>
+                  <div className='m-3 mb-3'>
                     <h4 className='text-primary'>Order Date: {array_data[0].Order_date}</h4>
                     <hr />
                   </div>
@@ -51,7 +51,7 @@ export default function MyOrder() {
                 <div className='row'>
                   {array_data.slice(1).map((item, i) => (
                     <div className='col-12 col-md-6 col-lg-3 mb-4' key={i}>
-                      <div className='card h-100 shadow-sm'>
+                      <div className='card h-100 w-300 shadow-sm'>
                         {/* Image */}
                         <img
                           src={item.img}
