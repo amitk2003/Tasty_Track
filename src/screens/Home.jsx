@@ -158,7 +158,7 @@ export default function Home() {
                     <p className="text-muted text-center">No items found.</p>
                 )}
             </div>
-            <Footer className='footer' />
+            <Footer  />
         </>
     );
 }
