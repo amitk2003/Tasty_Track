@@ -1,0 +1,5 @@
+.carousel-image {
+    height: 400px; /* Adjust the height as needed */
+    object-fit: cover; /* Ensures the image retains its aspect ratio */
+  }
+ 
