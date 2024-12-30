@@ -4,6 +4,7 @@ import Badge from 'react-bootstrap/Badge'
 import Modal from "../Modal";
 import Cart from "../screens/Cart";
 import { useCart } from "./ContextReducer";
+import AppIcon from './Appicon.jpg'
 export default function Navbar() {
     let data=useCart();
     const [cartview,setCartView]=useState(false);
@@ -17,7 +18,7 @@ return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-success">
         <div className="container-fluid">
         <Link className="navbar-brand fs-1 fst-bold" to="/">
-            Tasty Track
+            Tasty Track <img src={AppIcon} alt=""  style={{width:"120px",height:"100px"}}/>
         </Link>
         <button
             className="navbar-toggler"
