@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 // const url = 'mongodb+srv://amitk22:4aHv6cuyb2L4L4iR@cluster0.qwymx.mongodb.net/food_delivery_data?retryWrites=true&w=majority&appName=Cluster0';
-const Mongo_Url=process.env.MONGODB_URI; 
+const Mongo_Url=process.env.MONGO_URI;
+console.log('Mongo_Url:', Mongo_Url); 
 const connectDB = async () => {
     try {
         await mongoose.connect(Mongo_Url, {
