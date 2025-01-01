@@ -1,13 +1,14 @@
 import React from 'react'
 import Delete from './delete.png'
 import { useCart, useDispatchCart } from '../components/ContextReducer';
+const cart_url=process.env.REACT_APP_CART;
 export default function Cart() {
     let data = useCart();
     let dispatch = useDispatchCart();
     if (data.length === 0) {
     return (
     <div>
-        <div className='m-2 w-70 text-center fs-5'>The Cart is Empty!</div>
+        <div className='m-2 w-70 text-center fs-5'>The Cart is Empty!</div> 
     </div>
     )
 }
@@ -23,7 +24,7 @@ const handleCheckOut = async () => {
     console.log("Checkout data:", data);
     console.log("User Email:", userEmail);
     console.log("Order Date:", new Date().toLocaleDateString() + new Date().toLocaleTimeString());
-    let response = await fetch("http://localhost:5000/api/OrderData", {
+    let response = await fetch(cart_url, {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'

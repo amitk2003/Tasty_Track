@@ -1,10 +1,9 @@
 import mongoose from 'mongoose';
-
-const url = 'mongodb+srv://amitk22:4aHv6cuyb2L4L4iR@cluster0.qwymx.mongodb.net/food_delivery_data?retryWrites=true&w=majority&appName=Cluster0';
-
+// const url = 'mongodb+srv://amitk22:4aHv6cuyb2L4L4iR@cluster0.qwymx.mongodb.net/food_delivery_data?retryWrites=true&w=majority&appName=Cluster0';
+const Mongo_Url=process.env.MONGODB_URI; 
 const connectDB = async () => {
     try {
-        await mongoose.connect(url, {
+        await mongoose.connect(Mongo_Url, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });

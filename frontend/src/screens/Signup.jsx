@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "./screen.css";
 import { Link } from "react-router-dom";
-
+const signup_url = process.env.REACT_APP_SIGNUP;
 export default function Signup() {
     let [credentials, setCredentials] = useState({ name: "", email: "", password: "", Geolocation: "" });
     const [showPassword, setShowPassword] = useState(false); // Moved state outside
@@ -13,7 +13,7 @@ export default function Signup() {
     const HandleSubmit = async (x) => {
         x.preventDefault();
         try {
-            const response = await fetch("http://localhost:5000/api/createUser", {
+            const response = await fetch(signup_url, {
                 method: 'POST',
                 headers: {  // <-- 'headers' should be plural
                     'Content-Type': 'application/json'

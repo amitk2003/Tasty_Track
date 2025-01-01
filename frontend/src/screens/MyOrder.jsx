@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar.jsx';
 import Footer from '../components/Footer.jsx';
-
+const Order_history_url = process.env.REACT_APP_ORDER_HISTORY;
 export default function MyOrder() {
   const [orderData, setOrderData] = useState("");
 
   const fetchMyHistory = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/myOrderHistory", {
+      const response = await fetch(Order_history_url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

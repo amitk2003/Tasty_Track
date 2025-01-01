@@ -5,7 +5,8 @@ import Footer from '../components/Footer';
 import './crousel.css';
 import './Home.css';
 import searchItem from './search.png';
-
+const Home_url=process.env.REACT_APP_HOME;
+const Search_url=process.env.REACT_APP_SEARCH;
 export default function Home() {
     const [searchTerm, setSearchTerm] = useState('');
     const [foodCat, setFoodCat] = useState([]);
@@ -16,7 +17,7 @@ export default function Home() {
     useEffect(() => {
         const loadData = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/foodTypes', {
+                const response = await fetch(Home_url, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -42,7 +43,7 @@ export default function Home() {
 
         try {
             console.log("searching for search item", searchTerm);
-            const response = await fetch('http://localhost:5000/api/foodTypes/search', {
+            const response = await fetch(Search_url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
