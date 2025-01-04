@@ -1,10 +1,17 @@
 import mongoose from 'mongoose';
 // const url = 'mongodb+srv://amitk22:4aHv6cuyb2L4L4iR@cluster0.qwymx.mongodb.net/food_delivery_data?retryWrites=true&w=majority&appName=Cluster0';
-const Mongo_Url=process.env.MONGO_URI;
-console.log('Mongo_Url:', Mongo_Url); 
+import dotenv from 'dotenv'
+dotenv.config()
+const Mongo_UrI=process.env.MONGO_URI;
+console.log('Mongo_Url:', Mongo_UrI); 
+
 const connectDB = async () => {
+    if(!Mongo_UrI){
+        console.error('Mongo URI not found');
+        process.exit(1);
+    }
     try {
-        await mongoose.connect(Mongo_Url, {
+        await mongoose.connect(Mongo_UrI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });

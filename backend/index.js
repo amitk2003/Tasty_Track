@@ -7,10 +7,9 @@ import Searchrouter from './Route/Searchrouter.js';
 import bodyParser from 'body-parser';
 import router from './Route/OrderData.js'
 import dotenv from 'dotenv';
-
+dotenv.config();
 const app = express();
 const port = process.env.PORT||5000;
-dotenv.config();
 connectDB();
 
 // Use CORS to allow cross-origin requests
