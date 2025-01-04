@@ -11,10 +11,10 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT||5000;
 connectDB();
-
+const   Origin='http://localhost:3000'|| 'https://tasty-track-six.vercel.app/';
 // Use CORS to allow cross-origin requests
 app.use(cors({
-    origin: 'https://tasty-track-six.vercel.app/',
+    origin: Origin,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }));
