@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar.jsx';
 import Footer from '../components/Footer.jsx';
-const Order_history_url = process.env.REACT_APP_ORDER_HISTORY;
+const Order_history_url = process.env.REACT_APP_ORDER_HISTORY || 'http://localhost:5000/api/myOrderHistory';
 export default function MyOrder() {
   const [orderData, setOrderData] = useState("");
 

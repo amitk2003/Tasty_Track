@@ -5,8 +5,8 @@ import Footer from '../components/Footer';
 import './crousel.css';
 import './Home.css';
 import searchItem from './search.png';
-const Home_url=process.env.REACT_APP_HOME;
-const Search_url=process.env.REACT_APP_SEARCH;
+const Home_url=process.env.REACT_APP_HOME || 'http://localhost:5000/api/foodTypes';
+const Search_url=process.env.REACT_APP_SEARCH || 'http://localhost:5000/api/foodTypes/search';
 export default function Home() {
     const [searchTerm, setSearchTerm] = useState('');
     const [foodCat, setFoodCat] = useState([]);
