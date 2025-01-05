@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-const login_url = process.env.REACT_APP_LOGIN || 'http://localhost:5000/api/LoginUser';
+const LOGIN_URL='https://tasty-track-lyea.vercel.app/api/LoginUser';
+const login_url = LOGIN_URL || 'http://localhost:5000/api/LoginUser';
 export default function Login() {
     const [credentials, setCredentials] = useState({ email: "", password: "" });
     const navigate = useNavigate();

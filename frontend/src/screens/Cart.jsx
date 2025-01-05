@@ -1,7 +1,8 @@
 import React from 'react'
 import Delete from './delete.png'
 import { useCart, useDispatchCart } from '../components/ContextReducer';
-const cart_url=process.env.REACT_APP_CART || 'http://localhost:5000/api/OrderData';
+const CartUrl='https://tasty-track-lyea.vercel.app/api/OrderData';
+const cart_url=CartUrl || 'http://localhost:5000/api/OrderData';
 export default function Cart() {
     let data = useCart();
     let dispatch = useDispatchCart();

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import "./screen.css";
 import { Link } from "react-router-dom";
-const signup_url = process.env.REACT_APP_SIGNUP || 'http://localhost:5000/api/createUser';
+const signuP='https://tasty-track-lyea.vercel.app/api/createUser';
+const signup_url = signuP || 'http://localhost:5000/api/createUser';
 export default function Signup() {
     let [credentials, setCredentials] = useState({ name: "", email: "", password: "", Geolocation: "" });
     const [showPassword, setShowPassword] = useState(false); // Moved state outside
