@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-// const url = 'mongodb+srv://amitk22:4aHv6cuyb2L4L4iR@cluster0.qwymx.mongodb.net/food_delivery_data?retryWrites=true&w=majority&appName=Cluster0';
 import dotenv from 'dotenv'
 dotenv.config()
 const Mongo_UrI=process.env.MONGO_URI;
