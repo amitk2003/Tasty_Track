@@ -14,7 +14,8 @@ connectDB();
 
 const  Origin=[
    'http://localhost:3000',  // for local host react app
-   'https://tasty-track-six.vercel.app/', // for vercel app
+//    'https://tasty-track-six.vercel.app/', // for vercel app
+    'https://tasty-track-a4a7.vercel.app/',
 ] ;
 // Use CORS to allow cross-origin requests
 app.use(cors({
@@ -25,6 +26,7 @@ app.use(cors({
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true}));
+
 app.get('/', (req, res) => {
     res.send("Hello world");
 });
@@ -32,6 +34,12 @@ app.use('/api',UserRoute);
 app.use('/api',DisplayRoute);
 app.use('/api/foodTypes',Searchrouter);
 app.use('/api',router)
+app.options('*', cors({
+    origin: 'https://tasty-track-six.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
 app.post('/api/foodTypes', (req, res) => {
     // Handle the request and send the response
     res.json({ message: "foodTypes data sent successfully" });
