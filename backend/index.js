@@ -17,52 +17,63 @@ connectDB();
 
 // Define allowed origins
 const allowedOrigins = [
-  'http://localhost:3000',               // for local React app
-  'https://tasty-track-a4a7.vercel.app/', // another Vercel app URL
-//   'https://tasty-track-six.vercel.app/',  // Vercel production app (if needed)
+  'http://localhost:3000',
+  'https://tasty-track-a4a7.vercel.app',  // Remove trailing slash
+  'https://tasty-track-lyea.vercel.app'   // Add backend URL to allowed origins
 ];
 
-// Use CORS to allow cross-origin requests
+// Enhanced CORS configuration
 app.use(cors({
   origin: function (origin, callback) {
-    // Allow requests without origin (e.g., mobile or direct server-to-server requests)
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    // Check if the origin is allowed
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
     }
+    return callback(null, true);
   },
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,  // Allow credentials (cookies, authorization headers)
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  // Added OPTIONS
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
+  exposedHeaders: ['Content-Range', 'X-Content-Range'],
+  maxAge: 86400  // Cache preflight request results for 24 hours
 }));
 
-// Middleware to parse JSON and form data
+// Additional headers middleware
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+  next();
+});
+
+// Rest of your existing configuration
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Test route
 app.get('/', (req, res) => {
   res.send("Hello world");
 });
 
-// Routes
 app.use('/api', UserRoute);
 app.use('/api', DisplayRoute);
 app.use('/api/foodTypes', Searchrouter);
 app.use('/api', router);
 
-// Specific route for food types (GET /api/foodTypes)
 app.post('/api/foodTypes', (req, res) => {
-  // Handle the request and send the response
   res.json({ message: "foodTypes data sent successfully" });
 });
 
-// Fixed route for /api/foodTypes/search
 app.get('/api/foodTypes/search', async (req, res) => {
   res.json({ message: "Food items are successfully accessible" });
 });
 
-// Server listen
 app.listen(port, () => {
   console.log(`Food delivery app is running on port ${port}`);
 });

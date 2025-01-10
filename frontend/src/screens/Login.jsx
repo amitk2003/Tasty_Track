@@ -16,8 +16,10 @@ export default function Login() {
         try {
             const response = await fetch(login_url, {
                 method: 'POST',
+                credentials:'include',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Accept':'application/json'
                 },
                 body: JSON.stringify({
                     email: credentials.email,

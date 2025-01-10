@@ -16,8 +16,10 @@ export default function Signup() {
         try {
             const response = await fetch(signup_url, {
                 method: 'POST',
+                credentials:'include',
                 headers: {  // <-- 'headers' should be plural
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Accept':'application/json'
                 },
                 body: JSON.stringify({
                     name: credentials.name,

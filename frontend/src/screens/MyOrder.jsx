@@ -10,8 +10,10 @@ export default function MyOrder() {
     try {
       const response = await fetch(Order_history_url, {
         method: 'POST',
+        credentials:'include',
         headers: {
           'Content-Type': 'application/json',
+          'Accept':'application/json'
         },
         body: JSON.stringify({
           email: localStorage.getItem("UserEmail"),

@@ -27,8 +27,10 @@ const handleCheckOut = async () => {
     console.log("Order Date:", new Date().toLocaleDateString() + new Date().toLocaleTimeString());
     let response = await fetch(cart_url, {
     method: 'POST',
+    credentials:'include',
     headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept':'application/json'
     },
     body: JSON.stringify({
         order_data: data,
