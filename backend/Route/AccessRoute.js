@@ -17,8 +17,9 @@ UserRoute.post("/createUser", [
     .withMessage('Password must contain only letters, numbers, or special characters like @, #, $, %, ^, &, +, =')
 
 ], async (req, res) => {
-    // Validate the request body
+    // Validate the requestbody
     const errors = validationResult(req);
+    console.log( errors); // Debug
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
