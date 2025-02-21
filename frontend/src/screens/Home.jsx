@@ -81,6 +81,8 @@ export default function Home() {
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
                     </div>
                     <div className="carousel-caption" style={{ zIndex: "10", bottom: "-20px" }}>
                         <form onSubmit={handleSubmit}>
@@ -101,16 +103,22 @@ export default function Home() {
                     </div>
                     <div className="carousel-inner" id='carousel'>
                         <div className="carousel-item active">
-                            <img src={`${process.env.PUBLIC_URL}/assets/images/burger.avif`} className="d-block w-100" alt="Burger" style={{ filter: "brightness(40%)" }} />
+                            <img src={`${process.env.PUBLIC_URL}/assets/images/burger_op.jpg`} className="d-block w-100" alt="Burger" style={{ filter: "brightness(60%)" }} />
                         </div>
                         <div className="carousel-item">
-                            <img src={`${process.env.PUBLIC_URL}/assets/images/pastery.jpg`} className="d-block w-100" alt="Chicken Biryani" style={{ filter: "brightness(40%)" }} />
+                            <img src={`${process.env.PUBLIC_URL}/assets/images/desert.jpg`} className="d-block w-100" alt="pastery" style={{ filter: "brightness(60%)" }} />
                         </div>
                         <div className="carousel-item">
-                            <img src={`${process.env.PUBLIC_URL}/assets/images/panner_masala.avif`} className="d-block w-100" alt="Paneer Masala" style={{ filter: "brightness(50%)" }} />
+                            <img src={`${process.env.PUBLIC_URL}/assets/images/panner_masala.avif`} className="d-block w-100" alt="Paneer Masala" style={{ filter: "brightness(60%)" }} />
                         </div>
                         <div className="carousel-item">
-                            <img src={`${process.env.PUBLIC_URL}/assets/images/pizza.avif`} className="d-block w-100" alt="Pizza" style={{ filter: "brightness(40%)" }} />
+                            <img src={`${process.env.PUBLIC_URL}/assets/images/pizza_umm.jpg`} className="d-block w-100" alt="Pizza" style={{ filter: "brightness(60%)" }} />
+                        </div>
+                        <div className="carousel-item">
+                            <img src={`${process.env.PUBLIC_URL}/assets/images/chicken_spicy.jpg`} className="d-block w-100" alt="Pizza" style={{ filter: "brightness(60%)" }} />
+                        </div>
+                        <div className="carousel-item">
+                            <img src={`${process.env.PUBLIC_URL}/assets/images/fishfryy.jpg`} className="d-block w-100" alt="Pizza" style={{ filter: "brightness(60%)" }} />
                         </div>
                     </div>
                     <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -162,8 +170,13 @@ export default function Home() {
                 ) : (
                     <p className="text-muted text-center">No items found.</p>
                 )}
+            <div>
+            <Footer/> 
             </div>
-            <Footer  />
+            
+            </div>
+
+            
         </>
     );
 }

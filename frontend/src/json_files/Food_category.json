@@ -1,9 +1,9 @@
 [
     {
-        "categoryName":"Briyani/Rice"
+        "categoryName":"Biryani/Rice"
     },
     {
-        "categoryName":"Non_veg Items"
+        "categoryName":"Non-Veg Items"
     },
     {
         "categoryName":"Veg Items"
@@ -15,21 +15,21 @@
         "categoryName":"Broasted chicken"
     },
     {
-        "categoryName":"papad"
+        "categoryName":"Papad"
     },
     {
-        "categoryName":"samosa"
+        "categoryName":"Samosa"
     }, {
-        "categoryName":"pizza"
+        "categoryName":"Pizza"
     },
 
     {
         "categoryName":"Sweets"
     },
     {
-        "categoryName":"Icecream"
+        "categoryName":"Ice-Cream"
     },
     {
-        "categoryName":"cake"
+        "categoryName":"Cake"
     }
 ]

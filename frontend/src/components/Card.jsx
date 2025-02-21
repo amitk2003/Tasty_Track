@@ -45,14 +45,14 @@ export default function Card(props) {
       <div
         className="card mt-3"
         style={{
-          width: '20rem',
+          width: '23rem',
           maxHeight: '31rem',
           margin: '0px',
           color: 'white',
           backgroundColor: '#333', // Background for better contrast
           borderRadius: '8px', // Rounded corners
           top:'20px',
-          gap:'0px'
+          gap:'10px'
           
 
         }}
@@ -62,17 +62,17 @@ export default function Card(props) {
           className="card-img-top"
           style={{
             width: '100%', // Ensures the image spans the full width of the card
-            top:'20px',
-            height: '10rem',
+            top:'10px',
+            height: '16rem',
             objectFit: 'cover', // Prevents 
           }}
         />
         <div className="card-body">
-          <h5 className="card-title" style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>{props.foodData.title}</h5>
+          <h5 className="card-title" style={{ fontSize: '2rem', fontWeight: 'lighter' ,textAlign:'center'}}>{props.foodData.title}</h5>
           {/* <p className="card-text" style={{ fontSize: '12px', marginTop: '10px', color: '#ddd' }}>
             {props.foodData.description}
           </p> */}
-          <div className="container w-100 mt-3">
+          <div className="container w-100 mt-1" >
             <div className="d-flex align-items-center justify-content-between">
               {/* Quantity Dropdown */}
               <select
@@ -95,7 +95,7 @@ export default function Card(props) {
               <select
                 className="form-select bg-success text-white"
                 style={{
-                  width: '30%',
+                  width: '70%',
                   border: 'none',
                   borderRadius: '4px',
                   margin:'10px'
@@ -113,7 +113,7 @@ export default function Card(props) {
               <div
                 className="text-white fw-bold"
                 style={{
-                  fontSize: '0.9rem',
+                  fontSize: '1rem',
                   marginLeft: '10px',
                   color: '#eee',
                 }}
@@ -121,7 +121,7 @@ export default function Card(props) {
                 ₹{finalPrice}/-
               </div>
               <hr/>
-              <button className='btn bg-white text-success mx-3' onClick={handleAddToCart} style={{width:"70px",height:"40px" }}><img src={cart} alt="invalid item"/></button>
+              <button className='btn bg-white text-success mx-3'  style={{width:"150px",height:"40px" }} onClick={handleAddToCart}><img src={cart} alt="invalid item" /></button>
             </div>
           </div>
         </div>

@@ -1,9 +1,9 @@
 [
     {
         
-        "categoryName":"Briyani/Rice",
-        "title":"Chicken briyani",
-        "img" : "/assets/images/chicken_briyani.jpg",
+        "categoryName":"Biryani/Rice",
+        "title":"Chicken biryani",
+        "img" : "/assets/images/chicken_biryani.jpg",
         "options": [
             {
                 "half": "100",
@@ -17,8 +17,8 @@
     },
     {
     
-    "categoryName":"Briyani/Rice",
-    "title":" Veg briyani",
+    "categoryName":"Biryani/Rice",
+    "title":" Veg biryani",
     "img" : "/assets/images/veg_briyani.jpg",
     "options": [
         {
@@ -31,7 +31,7 @@
     },
     {
         
-        "categoryName":"Non_veg Items",
+        "categoryName":"Non-veg Items",
         "title":"Egg Masala",
         "img" : "/assets/images/egg_masala.jpg",
         "options": [
@@ -44,8 +44,8 @@
         
         },
         {
-        "categoryName":"Non_veg Items",
-        "title":"Fish_curry",
+        "categoryName":"Non-Veg Items",
+        "title":"Fish-Curry",
         "img" : "/assets/images/fish_curry.jpg",
         "options": [
             {
@@ -57,8 +57,8 @@
         },
         {
         
-        "categoryName":"Non_veg Items",
-        "title":"Fish_Fry",
+        "categoryName":"Non-Veg Items",
+        "title":"Fish-Fry",
         "img" :"/assets/images/fish_fry.jpg",
         "options": [
             {
@@ -70,7 +70,7 @@
         },
         {
             
-            "categoryName":"Non_veg Items",
+            "categoryName":"Non-Veg Items",
             "title":"Chicken Tandoori",
             "img" : "/assets/images/chicken_tandoori.jpg",
             "options": [
@@ -84,9 +84,9 @@
         },
         {
             
-            "categoryName":"Non_veg Items",
+            "categoryName":"Non-Veg Items",
             "title":"Chicken Handi",
-            "img" : "/assets/images/chicken handi.jpg",
+            "img" : "/assets/images/chickenhandi.jpg",
             "options": [
                 {
                     "half": "160",
@@ -98,7 +98,7 @@
         
         {
             
-            "categoryName":"Non_veg Items",
+            "categoryName":"Non-Veg Items",
             "title":"Chicken Masala",
             "img" : "/assets/images/chicken_masala.jpg",
             "options": [
@@ -164,7 +164,7 @@
         {
             
             "categoryName":"Veg Items",
-            "title":"Panner Masala",
+            "title":"Paneer Masala",
             "img" : "/assets/images/panner_m2.jpg",
             "options": [
                 {
@@ -218,7 +218,7 @@
         },
         {
             
-            "categoryName":"papad",
+            "categoryName":"Papad",
             "title":"Papad Masala",
             "img" : "/assets/images/papad_masala.jpg",
             "options": [
@@ -232,8 +232,8 @@
         },
         {
             
-            "categoryName":"samosa",
-            "title":"Samsoa",
+            "categoryName":"Samosa",
+            "title":"Samosa",
             "img" :"/assets/images/samsoa.jpg",
             "options": [
                 {
@@ -246,7 +246,7 @@
         },
         {
             
-            "categoryName":"pizza",
+            "categoryName":"Pizza",
             "title":"Pizza",
             "img" : "/assets/images/pizza.avif",
             "options": [
@@ -261,7 +261,7 @@
         },
         {
             
-            "categoryName":"pizza",
+            "categoryName":"Pizza",
             "title":"Burger",
             "img" : "/assets/images/burger2.jpg",
             "options": [
@@ -291,7 +291,7 @@
         {
             
             "categoryName":"Sweets",
-            "title":"Gulab_jamun",
+            "title":"Gulab Jamun",
             "img" : "/assets/images/gulab_jamun.jpg",
             "options": [
                 {
@@ -331,8 +331,8 @@
             
         },
         {
-        "categoryName":"Icecream",
-            "title":"icecream",
+        "categoryName":"Ice-Cream",
+            "title":"Ice-Cream",
             "img" : "/assets/images/icecream.jpg",
             "options": [
                 {
@@ -344,8 +344,8 @@
         },
         {   
             
-            "categoryName":"cake",
-            "title":"Pastery",
+            "categoryName":"Cake",
+            "title":"Pastry",
             "img": "/assets/images/cake.jpeg",
             "options": [
                 {
