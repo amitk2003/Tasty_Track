@@ -109,7 +109,7 @@ export default function Home() {
                             <img src={`${process.env.PUBLIC_URL}/assets/images/desert.jpg`} className="d-block w-100" alt="pastery" style={{ filter: "brightness(60%)" }} />
                         </div>
                         <div className="carousel-item">
-                            <img src={`${process.env.PUBLIC_URL}/assets/images/panner_masala.avif`} className="d-block w-100" alt="Paneer Masala" style={{ filter: "brightness(60%)" }} />
+                            <img src={`${process.env.PUBLIC_URL}/assets/images/panner_masala.avif`} className="d-block w-100" alt="Paneer Masala" style={{ filter: "brightness(100%)" }} />
                         </div>
                         <div className="carousel-item">
                             <img src={`${process.env.PUBLIC_URL}/assets/images/pizza_umm.jpg`} className="d-block w-100" alt="Pizza" style={{ filter: "brightness(60%)" }} />

@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import cart from "./Addcart.png";
 import { useCart, useDispatchCart } from "./ContextReducer";
+import Cart from "../screens/Cart";
 
 export default function Card(props) {
-
+const navigate=useNavigate();
   const dispatch = useDispatchCart();
   const data = useCart();
   const options = props.options;
@@ -43,16 +44,16 @@ export default function Card(props) {
         img: props.foodData.img,
       });
     }
-
+    navigate("/cart");
     
   };
 
   return (
-    <div className="col-lg-3 col-md-4 col-sm-6 mb-4"> {/* Improved spacing */}
+    <div className="col-lg-3 col-md-4 col-sm-6 mb-5" > {/* Improved spacing */}
       <div
         className="card mt-4 shadow-lg"
         style={{
-          width: "18rem",
+          width: "20rem",
           height:"30rem",
           color: "white",
           backgroundColor: "#333",
@@ -70,7 +71,7 @@ export default function Card(props) {
           }}
         />
         <div className="card-body">
-          <h5 className="card-title text-center" style={{fontSize:"2rem"}}>{props.foodData.title}</h5>
+          <h5 className="card-title text-center">{props.foodData.title}</h5>
 
           <div className="d-flex justify-content-between align-items-center mt-2">
             {/* Quantity Dropdown */}
@@ -89,7 +90,7 @@ export default function Card(props) {
             {/* Size Dropdown */}
             <select
               className="form-select bg-success text-white"
-              style={{ width: "50%" }}
+              style={{ width: "80%", gap:"1rem" }}
               onChange={(e) => setSize(e.target.value)}
               ref={priceRef}
             >

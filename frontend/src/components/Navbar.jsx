@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
+import  Tasty from './tasty.png'
 import Modal from "../Modal";
 import Cart from "../screens/Cart";
 import { useCart } from "./ContextReducer";
-import AppIcon from "./Appicon.jpg";
+
 
 export default function Navbar() {
   let data = useCart();
@@ -23,7 +24,7 @@ export default function Navbar() {
           <Link className="navbar-brand fs-1 fst-bold" to="/">
             Tasty Track{" "}
             <img
-              src={AppIcon}
+              src={Tasty}
               alt=""
               style={{ width: "120px", height: "100px" }}
             />

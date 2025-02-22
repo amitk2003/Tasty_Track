@@ -72,7 +72,7 @@ return (
                 <td >{food.title}</td>
                 <td>{food.qty}</td>
                 <td>{food.size}</td>
-                <td>{food.price}</td>
+                <td>{food.price}{"₹"}</td>
                
                 <td ><button type="button" className="btn p-0"><img src={Delete} alt='delete' onClick={()=>{dispatch({type: "REMOVE", index:index})}} style={{width:"30px"}}/></button> </td></tr>
             ))}
