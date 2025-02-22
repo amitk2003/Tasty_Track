@@ -1,129 +1,117 @@
-import React,{useEffect, useRef, useState} from 'react';
-import cart from './Addcart.png'
-import { useCart, useDispatchCart } from './ContextReducer';
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import cart from "./Addcart.png";
+import { useCart, useDispatchCart } from "./ContextReducer";
+
 export default function Card(props) {
-  let dispatch=useDispatchCart();
-  let data=useCart();
-  let options=props.options;
-  const priceRef= useRef();
-  let priceOptions=Object.keys(options);
-  let [qty,setQty]=useState(1);
-  let [size,setSize]=useState("");
-  const handleAddToCart=async()=>{
-        let food=[];
-        for(const item of data){
-          if(item.id===props.foodData._id){
-            food=item;
-            
-            break;
-          }
 
-          
-        }
-        console.log(food);
-        if(food!=[]){
-          if(food.size===size){
-            await dispatch({ type: "UPDATE", id: props.foodData._id,title:props.foodData.title,price:finalPrice,qty:qty,size:size})
-            return;
-          }
-          else if(food.size!==size){
-            await dispatch({type: "ADD", id:props.foodData._id,title:props.foodData.title,price:finalPrice,qty:qty,size:size,img:props.foodData.img});
-            return;
-          }
-          return;
-        }
-        await dispatch({type: "ADD", id:props.foodData._id,title:props.foodData.title,price:finalPrice,qty:qty,size:size,img:props.foodData.img});
-        
-      
-  }
-  let finalPrice =qty*parseInt(options[size]);
-  useEffect(()=>{
+  const dispatch = useDispatchCart();
+  const data = useCart();
+  const options = props.options;
+  const priceRef = useRef();
+  const priceOptions = Object.keys(options);
+
+  const [qty, setQty] = useState(1);
+  const [size, setSize] = useState(priceOptions[0]); // Default size
+
+  let finalPrice = qty * (options[size] ? parseInt(options[size]) : 0); // Prevents NaN errors
+
+  useEffect(() => {
     setSize(priceRef.current.value);
-  },[])
-  return (
-    <div className="col-md-2"> {/* Ensures each card occupies its column */}
-      <div
-        className="card mt-3"
-        style={{
-          width: '23rem',
-          maxHeight: '31rem',
-          margin: '0px',
-          color: 'white',
-          backgroundColor: '#333', // Background for better contrast
-          borderRadius: '8px', // Rounded corners
-          top:'20px',
-          gap:'10px'
-          
+  }, []);
 
+  const handleAddToCart = async () => {
+    let existingFood = data.find((item) => item.id === props.foodData._id && item.size === size);
+
+    if (existingFood) {
+      await dispatch({
+        type: "UPDATE",
+        id: props.foodData._id,
+        title: props.foodData.title,
+        price: finalPrice,
+        qty: qty,
+        size: size,
+      });
+    } else {
+      await dispatch({
+        type: "ADD",
+        id: props.foodData._id,
+        title: props.foodData.title,
+        price: finalPrice,
+        qty: qty,
+        size: size,
+        img: props.foodData.img,
+      });
+    }
+
+    
+  };
+
+  return (
+    <div className="col-lg-3 col-md-4 col-sm-6 mb-4"> {/* Improved spacing */}
+      <div
+        className="card mt-4 shadow-lg"
+        style={{
+          width: "18rem",
+          height:"30rem",
+          color: "white",
+          backgroundColor: "#333",
+          borderRadius: "8px",
         }}
       >
         <img
           src={props.foodData.img}
           className="card-img-top"
+          alt="Food item"
           style={{
-            width: '100%', // Ensures the image spans the full width of the card
-            top:'10px',
-            height: '16rem',
-            objectFit: 'cover', // Prevents 
+            width: "100%",
+            height: "200px",
+            objectFit: "cover",
           }}
         />
         <div className="card-body">
-          <h5 className="card-title" style={{ fontSize: '2rem', fontWeight: 'lighter' ,textAlign:'center'}}>{props.foodData.title}</h5>
-          {/* <p className="card-text" style={{ fontSize: '12px', marginTop: '10px', color: '#ddd' }}>
-            {props.foodData.description}
-          </p> */}
-          <div className="container w-100 mt-1" >
-            <div className="d-flex align-items-center justify-content-between">
-              {/* Quantity Dropdown */}
-              <select
-                className="form-select bg-success text-white"
-                style={{
-                  width: '30%',
-                  border: 'none',
-                  borderRadius: '4px',
-                }}
-                onChange={(e)=>setQty(e.target.value)}
-              >
-                {Array.from(Array(6), (e, i) => (
-                  <option key={i + 1} value={i + 1}>
-                    {i + 1}
-                  </option>
-                ))}
-              </select>
+          <h5 className="card-title text-center" style={{fontSize:"2rem"}}>{props.foodData.title}</h5>
 
-              {/* Size Dropdown */}
-              <select
-                className="form-select bg-success text-white"
-                style={{
-                  width: '70%',
-                  border: 'none',
-                  borderRadius: '4px',
-                  margin:'10px'
-                }}
-                onChange={(e)=>setSize(e.target.value)}
-                ref={priceRef}
-              >
-                {priceOptions.map((data)=>{
-                  return <option key={data} value={data}>{data}</option>
+          <div className="d-flex justify-content-between align-items-center mt-2">
+            {/* Quantity Dropdown */}
+            <select
+              className="form-select bg-success text-white"
+              style={{ width: "40%" }}
+              onChange={(e) => setQty(e.target.value)}
+            >
+              {Array.from({ length: 6 }, (_, i) => (
+                <option key={i + 1} value={i + 1}>
+                  {i + 1}
+                </option>
+              ))}
+            </select>
 
-                })}
-              </select>
-
-              {/* Price Display */}
-              <div
-                className="text-white fw-bold"
-                style={{
-                  fontSize: '1rem',
-                  marginLeft: '10px',
-                  color: '#eee',
-                }}
-              >
-                ₹{finalPrice}/-
-              </div>
-              <hr/>
-              <button className='btn bg-white text-success mx-3'  style={{width:"150px",height:"40px" }} onClick={handleAddToCart}><img src={cart} alt="invalid item" /></button>
-            </div>
+            {/* Size Dropdown */}
+            <select
+              className="form-select bg-success text-white"
+              style={{ width: "50%" }}
+              onChange={(e) => setSize(e.target.value)}
+              ref={priceRef}
+            >
+              {priceOptions.map((data) => (
+                <option key={data} value={data}>
+                  {data}
+                </option>
+              ))}
+            </select>
           </div>
+
+          {/* Price */}
+          <div className="text-white fw-bold mt-2 text-center">₹{finalPrice}/-</div>
+
+          {/* Add to Cart Button */}
+          <button
+            className="btn bg-white text-success w-100 mt-3"
+            onClick={handleAddToCart}
+          >
+            <img src={cart} alt="Add to cart" style={{fontFamily:"cursive",height:"60px",width:"70px", fontSize:"4rem", padding:"5px"}} />
+            Add To Cart
+          </button>
         </div>
       </div>
     </div>

@@ -8,3 +8,8 @@ body {
   background-color: grey;
   font-family: 'Noto Sans V2' !important;
 }
+.custom-navbar {
+  background: linear-gradient(90deg, #41ffb6, #ff792b); /* Pink-Orange Gradient */
+  padding: 10px;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+}

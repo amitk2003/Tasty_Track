@@ -54,14 +54,15 @@ export default function MyOrder() {
                 <div className='row'>
                   {array_data.slice(1).map((item, i) => (
                     <div className='col-12 col-md-6 col-lg-3 mb-4' key={i}>
-                      <div className='card h-100 w-300 shadow-sm'>
+                      <div className='card  shadow-md d-flex' style={{height:"300px", width:"200px", justifyContent:"center",gap:".5rem", margin:"20px", alignItems:"center"}}>
                         {/* Image */}
                         <img
                           src={item.img}
                           className='card-img-top'
                           alt={item.name}
                           style={{
-                            height: '160px',
+                            height: '150px',
+                            width:"200px",
                             objectFit: 'cover'
                           }}
                         />
