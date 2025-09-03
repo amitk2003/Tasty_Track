@@ -1,0 +1,21 @@
+
+
+.carousel-inner img {
+  margin-top:5px;
+    object-fit: cover;
+    height:100vh;
+    width:100%;
+    filter: brightness(30%); /* Fix brightness filter */
+}
+
+@media (max-width: 768px) {
+    #carousel {
+      max-height: 600px; /* Adjust carousel height for smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    #carousel {
+      max-height: 400px; /* Further reduce carousel height for very small screens */
+    }
+}

@@ -48,6 +48,7 @@ const navigate=useNavigate();
     
   };
 
+  const isLoggedIn = localStorage.getItem("authToken");
   return (
     <div className="col-lg-3 col-md-4 col-sm-6 mb-5" > {/* Improved spacing */}
       <div

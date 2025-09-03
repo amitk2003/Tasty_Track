@@ -1,6 +1,6 @@
 import express from 'express';
-const DisplayRoute = express.Router();
-DisplayRoute.post('/foodTypes', (req, res) => {
+const router = express.Router();
+router.post('/foodTypes', (req, res) => {
     try {
         res.send({
             foodItems: global.food_types,
@@ -11,4 +11,7 @@ DisplayRoute.post('/foodTypes', (req, res) => {
         res.status(500).send("Server error");
     }
 });
-export default DisplayRoute;
+// router.get('/get_foodinfo',(req,res)=>{
+//     const {}
+// })
+export default router;

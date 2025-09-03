@@ -1,8 +1,8 @@
 import cors from 'cors';
 import express from 'express';
 import connectDB from './db.js';
-import UserRoute from './Route/AccessRoute.js';
-import DisplayRoute from './Route/DisplayRoute.js';
+import UserRoute from './Route/userCredential.js';
+import food_router from './Route/food_route.js';
 import Searchrouter from './Route/Searchrouter.js';
 import bodyParser from 'body-parser';
 import router from './Route/OrderData.js';
@@ -62,7 +62,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api', UserRoute);
-app.use('/api', DisplayRoute);
+app.use('/api', food_router);
 app.use('/api/foodTypes', Searchrouter);
 app.use('/api', router);
 
