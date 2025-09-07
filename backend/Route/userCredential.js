@@ -1,4 +1,6 @@
+// Google OAuth sign-up route
 import express from 'express';
+import { OAuth2Client } from 'google-auth-library';
 import User from '../models/User.js'; // Correct import with 'User'
 import { body, validationResult } from 'express-validator';
 import bcrypt from "bcryptjs";
@@ -9,6 +11,82 @@ import authToken from './AuthToken.js';
 // const jwtsecret="rbgu4t76@#$%^&*()_)(*&^%$123vbnmkli87655";
 const jwtsecret=process.env.jwtsecret;
 const UserRoute = express.Router();
+const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+UserRoute.post('/sign-up/google', async (req, res) => {
+    const { token } = req.body;
+    if (!token) {
+        return res.status(400).json({ success: false, error: 'No token provided' });
+    }
+    try {
+        // Verify Google token
+        const ticket = await googleClient.verifyIdToken({
+            idToken: token,
+            audience: process.env.GOOGLE_CLIENT_ID,
+        });
+        const payload = ticket.getPayload();
+        const email = payload.email;
+        let existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ success: false, message: 'User already exists' });
+        }
+        // Create the user
+        const user = await User.create({
+            name: payload.name || email,
+            email,
+            password: '', // No password for Google users
+            Geolocation: '',
+        });
+        // Generate JWT
+        const jwtPayload = {
+            id: user._id,
+            email: user.email,
+            role: user.role
+        };
+        const authToken = jwt.sign(jwtPayload, jwtsecret, { expiresIn: '30d' });
+        return res.json({ success: true, authToken, email: user.email, role: user.role, id: user._id });
+    } catch (error) {
+        console.error('Google sign-up error:', error);
+        return res.status(401).json({ success: false, error: 'Invalid Google token' });
+    }
+});
+
+// Google OAuth login route
+UserRoute.post('/sign-in/google', async (req, res) => {
+    const { token } = req.body;
+    if (!token) {
+        return res.status(400).json({ success: false, error: 'No token provided' });
+    }
+    try {
+        // Verify Google token
+        const ticket = await googleClient.verifyIdToken({
+            idToken: token,
+            audience: process.env.GOOGLE_CLIENT_ID,
+        });
+        const payload = ticket.getPayload();
+        const email = payload.email;
+        let user = await User.findOne({ email });
+        if (!user) {
+            // Create user if not exists
+            user = await User.create({
+                name: payload.name || email,
+                email,
+                password: '', // No password for Google users
+                Geolocation: '',
+            });
+        }
+        // Generate JWT
+        const jwtPayload = {
+            id: user._id,
+            email: user.email,
+            role: user.role
+        };
+        const authToken = jwt.sign(jwtPayload, jwtsecret, { expiresIn: '30d' });
+        return res.json({ success: true, authToken, email: user.email, role: user.role, id: user._id });
+    } catch (error) {
+        console.error('Google login error:', error);
+        return res.status(401).json({ success: false, error: 'Invalid Google token' });
+    }
+});
 
 // Route to create a new user
 UserRoute.post("/sign-up", [

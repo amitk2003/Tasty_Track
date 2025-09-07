@@ -1,98 +1,148 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-const LOGIN_URL='https://tasty-track-lyea.vercel.app/api/sign-in';
-const login_url = LOGIN_URL || 'http://localhost:5000/api/sign-in';
+import React, { useState } from "react";
+import { GoogleLogin } from "@react-oauth/google";
+import { Link, useNavigate } from "react-router-dom";
+import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./Login.css"; // we'll add some extra CSS here
+
+const login_url = "http://localhost:5000/api/sign-in";
+
 export default function Login() {
-    const [credentials, setCredentials] = useState({ email: "", password: "" });
-    const navigate = useNavigate();
-    const [showPassword, setShowPassword] = useState(false); // Moved state outside
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
-    const togglePasswordVisibility = () => {
-        setShowPassword(!showPassword);
-    };
-    // handlesubmit function used for link to be active
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await fetch(login_url, {
-                method: 'POST',
-                credentials:'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept':'application/json'
-                },
-                body: JSON.stringify({
-                    email: credentials.email,
-                    password: credentials.password,
-                })
-            });
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
-            const result = await response.json();
-            console.log(result);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(login_url, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          email: credentials.email,
+          password: credentials.password,
+        }),
+      });
 
-            if (!result.success) {
-                alert('Enter valid credentials');
-            }
-            if (result.success) {
-                // save token on localstorage
-                localStorage.setItem("UserEmail",credentials.email);
-                console.log(localStorage.getItem("UserEmail"));
-                localStorage.setItem("authToken",result.authToken)
-                console.log(localStorage.getItem("authToken"));
-                navigate("/");
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Failed to fetch. Please check if the server is running.');
-        }
-    };
+      const result = await response.json();
+      if (!result.success) {
+        alert("Enter valid credentials");
+      } else {
+        localStorage.setItem("UserEmail", credentials.email);
+        localStorage.setItem("authToken", result.authToken);
+        navigate("/");
+      }
+    } catch (error) {
+      alert("Failed to fetch. Please check if the server is running.");
+    }
+  };
 
-    const onChange = (event) => {
-        setCredentials({ ...credentials, [event.target.name]: event.target.value });
-    };
+  const onChange = (event) => {
+    setCredentials({ ...credentials, [event.target.name]: event.target.value });
+  };
 
-    return (
-        <div className="container">
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Email address</label>
-                    <input
-                        type="email"
-                        name="email"
-                        className="form-control"
-                        id="exampleInputEmail1"
-                        aria-describedby="emailHelp"
-                        placeholder="Enter email"
-                        value={credentials.email}
-                        onChange={onChange}
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Password</label>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <input
-                            type={showPassword ? "text" : "password"}
-                            name="password"
-                            className="form-control"
-                            id="exampleInputPassword1"
-                            placeholder="Password"
-                            value={credentials.password}
-                            onChange={onChange}
-                        />
-                        <button
-                            type="button"
-                            onClick={togglePasswordVisibility}
-                            style={{ marginLeft: '10px' }}
-                        >
-                            {showPassword ? "Hide" : "Show"}
-                        </button>
-                    </div>
-                </div>
+  return (
+    <div className="login-container d-flex align-items-center justify-content-center vh-100">
+      <div className="login-card shadow-lg p-4 rounded">
+        <h2 className="text-center mb-4 fw-bold">Welcome Back 👋</h2>
+        <p className="text-center text-muted mb-4">
+          Login to continue to <strong>Tasty Track</strong>
+        </p>
+        <form onSubmit={handleSubmit}>
+          {/* Email */}
+          <div className="form-group mb-3 position-relative">
+            <FaEnvelope className="input-icon" />
+            <input
+              type="email"
+              name="email"
+              className="form-control ps-5"
+              placeholder="Enter your email"
+              value={credentials.email}
+              onChange={onChange}
+              required
+            />
+          </div>
 
-                <button type="submit" className="m-3 btn btn-success">Submit</button>
-                {/* link help to redirect user to link creatuser */}
-                <Link to='/createUser' className='m-3 btn btn-danger'>I'm a new user</Link>
-            </form>
+          {/* Password */}
+          <div className="form-group mb-3 position-relative">
+            <FaLock className="input-icon" />
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              className="form-control ps-5 pe-5"
+              placeholder="Enter your password"
+              value={credentials.password}
+              onChange={onChange}
+              required
+            />
+            <span
+              className="toggle-password"
+              onClick={togglePasswordVisibility}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
+
+          {/* Submit */}
+          <button type="submit" className="btn btn-success w-100 mb-3">
+            Login
+          </button>
+
+          {/* Signup link */}
+          <p className="text-center">
+            New here?{" "}
+            <Link to="/createUser" className="text-decoration-none fw-bold">
+              Create an account
+            </Link>
+          </p>
+        </form>
+
+        {/* Divider */}
+        <div className="d-flex align-items-center my-3">
+          <hr className="flex-grow-1" />
+          <span className="mx-2 text-muted">OR</span>
+          <hr className="flex-grow-1" />
         </div>
-    );
+
+        {/* Google login */}
+        <div className="text-center">
+          <GoogleLogin
+            onSuccess={async (credentialResponse) => {
+              try {
+                const response = await fetch(login_url + "/google", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                  },
+                  body: JSON.stringify({
+                    token: credentialResponse.credential,
+                  }),
+                });
+                const result = await response.json();
+                if (result.success) {
+                  localStorage.setItem("UserEmail", result.email);
+                  localStorage.setItem("authToken", result.authToken);
+                  navigate("/");
+                } else {
+                  alert("Google login failed");
+                }
+              } catch (error) {
+                alert("Google login error");
+              }
+            }}
+            onError={() => alert("Google login failed")}
+          />
+        </div>
+      </div>
+    </div>
+  );
 }

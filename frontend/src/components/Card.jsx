@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import cart from "./Addcart.png";
 import { useCart, useDispatchCart } from "./ContextReducer";
-import Cart from "../screens/Cart";
+// import Cart from "../pages/Cart";
 
 export default function Card(props) {
 const navigate=useNavigate();
@@ -48,7 +48,6 @@ const navigate=useNavigate();
     
   };
 
-  const isLoggedIn = localStorage.getItem("authToken");
   return (
     <div className="col-lg-3 col-md-4 col-sm-6 mb-5" > {/* Improved spacing */}
       <div

@@ -4,8 +4,7 @@ import Card from '../components/Card';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-const HOME_URL = 'https://tasty-track-lyea.vercel.app/api/foodTypes';
-const Home_url = HOME_URL || 'http://localhost:5000/api/foodTypes';
+const FOOD_ITEMS_URL = 'http://localhost:5000/api/foodItems';
 
 export default function Category() {
   const { category } = useParams();
@@ -14,13 +13,16 @@ export default function Category() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await fetch(Home_url, {
-          method: 'POST',
-          credentials: 'include',
+        const response = await fetch(FOOD_ITEMS_URL, {
+          method: 'GET',
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         });
         const data = await response.json();
-        setFoodItems(data.foodItems.filter((item) => item.categoryName.toLowerCase() === category.toLowerCase()));
+        setFoodItems(
+          (data.foodItems || []).filter(
+            (item) => item.categoryName && item.categoryName.toLowerCase() === category.toLowerCase()
+          )
+        );
       } catch (error) {
         console.error('Error fetching category data:', error);
       }

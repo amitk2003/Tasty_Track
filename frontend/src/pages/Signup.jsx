@@ -1,139 +1,207 @@
-import React, { useState } from 'react';
-import "./screen.css";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { GoogleLogin } from "@react-oauth/google";
+import { Link, useNavigate } from "react-router-dom";
+import { FaEnvelope, FaLock, FaUser, FaHome, FaEye, FaEyeSlash } from "react-icons/fa";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./Auth.css"; // shared styles for login/signup
 
-const signup_url = 'https://tasty-track-lyea.vercel.app/api//sign-up'
-const local_signup='http://localhost:5000/api/sign-up'
+const local_signup_url = "http://localhost:5000/api/createUser";
+const google_signup_url = "http://localhost:5000/api/sign-up/google";
 
 export default function Signup() {
-    const [credentials, setCredentials] = useState({ name: "", email: "", password: "", Geolocation: "" });
-    const [showPassword, setShowPassword] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+  const [credentials, setCredentials] = useState({
+    name: "",
+    email: "",
+    password: "",
+    Geolocation: "",
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
-    const togglePasswordVisibility = () => {
-        setShowPassword(!showPassword);
-    };
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
-    const isValid = () => {
-        if (!credentials.name || credentials.name.length < 3) {
-            alert('Name must be at least 3 characters long.');
-            return false;
-        }
-        if (!credentials.email.includes('@')) {
-            alert('Please enter a valid email address.');
-            return false;
-        }
-        if (credentials.password.length < 8) {
-            alert('Password must be at least 8 characters long.');
-            return false;
-        }
-        return true;
-    };
+  const isValid = () => {
+    if (!credentials.name || credentials.name.length < 5) {
+      alert("Name must be at least 5 characters long.");
+      return false;
+    }
+    if (!credentials.email.includes("@")) {
+      alert("Please enter a valid email address.");
+      return false;
+    }
+    if (credentials.password.length < 8) {
+      alert("Password must be at least 8 characters long.");
+      return false;
+    }
+    return true;
+  };
 
-    const HandleSubmit = async (x) => {
-        x.preventDefault();
-        if (!isValid()) return;
+  const HandleSubmit = async (e) => {
+    e.preventDefault();
+    if (!isValid()) return;
 
-        setIsLoading(true);
-        try {
-            const response = await fetch( local_signup, {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                },
-                body: JSON.stringify(credentials),
-            });
+    setIsLoading(true);
+    try {
+      const response = await fetch(local_signup_url, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(credentials),
+      });
 
-            const x1 = await response.json();
-            console.log('Response Status:', response.status);
-            console.log('Response Body:', x1);
+      const resData = await response.json();
+      setIsLoading(false);
 
-            setIsLoading(false);
+      if (response.ok && resData.success) {
+        alert("Account created successfully!");
+        navigate("/login");
+      } else {
+        const errorMsg = resData.errors
+          ? resData.errors.map((err) => err.msg).join(", ")
+          : "Enter valid credentials";
+        alert(errorMsg);
+      }
+    } catch (error) {
+      setIsLoading(false);
+      alert("Failed to fetch. Please check if the server is running.");
+    }
+  };
 
-            if (response.ok && x1.success) {
-                alert('Account created successfully!');
-            } else {
-                const errorMsg = x1.errors ? x1.errors.map(err => err.msg).join(', ') : 'Enter valid credentials';
-                alert(errorMsg);
-            }
-        } catch (error) {
-            setIsLoading(false);
-            console.error('Error:', error);
-            alert('Failed to fetch. Please check if the server is running.');
-        }
-    };
+  const onChange = (event) => {
+    setCredentials({ ...credentials, [event.target.name]: event.target.value });
+  };
 
-    const onChange = (event) => {
-        setCredentials({ ...credentials, [event.target.name]: event.target.value });
-    };
+  return (
+    <div className="auth-container d-flex align-items-center justify-content-center vh-100">
+      <div className="auth-card shadow-lg p-4 rounded">
+        <h2 className="text-center mb-4 fw-bold">Create Account ✨</h2>
+        <p className="text-center text-muted mb-4">
+          Sign up and start using <strong>Tasty Track</strong>
+        </p>
 
-    return (
-        <div className="container">
-            <form onSubmit={HandleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="name">Name</label>
-                    <input
-                        type="text"
-                        name="name"
-                        className="form-control"
-                        placeholder="Enter your UserName"
-                        value={credentials.name}
-                        onChange={onChange}
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Email address</label>
-                    <input
-                        type="email"
-                        name="email"
-                        className="form-control"
-                        id="exampleInputEmail1"
-                        aria-describedby="emailHelp"
-                        placeholder="Enter email"
-                        value={credentials.email}
-                        onChange={onChange}
-                    />
-                    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Password</label>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <input
-                            type={showPassword ? "text" : "password"}
-                            name="password"
-                            className="form-control"
-                            id="exampleInputPassword1"
-                            placeholder="Password"
-                            value={credentials.password}
-                            onChange={onChange}
-                        />
-                        <button
-                            type="button"
-                            onClick={togglePasswordVisibility}
-                            style={{ marginLeft: "15px" }}
-                        >
-                            {showPassword ? "Hide" : "Show"}
-                        </button>
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="exampleInputAddress1">Address</label>
-                    <input
-                        type="text"
-                        name="Geolocation"
-                        className="form-control"
-                        placeholder="Residence"
-                        value={credentials.Geolocation}
-                        onChange={onChange}
-                    />
-                </div>
-                <button type="submit" className="m-3 btn btn-success" disabled={isLoading}>
-                    {isLoading ? 'Submitting...' : 'Submit'}
-                </button>
-                <Link to='/login' className='m-3 btn btn-danger'>Already a user</Link>
-            </form>
+        <form onSubmit={HandleSubmit}>
+          {/* Name */}
+          <div className="form-group mb-3 position-relative">
+            <FaUser className="input-icon" />
+            <input
+              type="text"
+              name="name"
+              className="form-control ps-5"
+              placeholder="Enter your name"
+              value={credentials.name}
+              onChange={onChange}
+              required
+            />
+          </div>
+
+          {/* Email */}
+          <div className="form-group mb-3 position-relative">
+            <FaEnvelope className="input-icon" />
+            <input
+              type="email"
+              name="email"
+              className="form-control ps-5"
+              placeholder="Enter your email"
+              value={credentials.email}
+              onChange={onChange}
+              required
+            />
+          </div>
+
+          {/* Password */}
+          <div className="form-group mb-3 position-relative">
+            <FaLock className="input-icon" />
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              className="form-control ps-5 pe-5"
+              placeholder="Create a password"
+              value={credentials.password}
+              onChange={onChange}
+              required
+            />
+            <span
+              className="toggle-password"
+              onClick={togglePasswordVisibility}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
+
+          {/* Address */}
+          <div className="form-group mb-3 position-relative">
+            <FaHome className="input-icon" />
+            <input
+              type="text"
+              name="Geolocation"
+              className="form-control ps-5"
+              placeholder="Enter your address"
+              value={credentials.Geolocation}
+              onChange={onChange}
+            />
+          </div>
+
+          {/* Submit */}
+          <button
+            type="submit"
+            className="btn btn-success w-100 mb-3"
+            disabled={isLoading}
+          >
+            {isLoading ? "Submitting..." : "Sign Up"}
+          </button>
+
+          <p className="text-center">
+            Already have an account?{" "}
+            <Link to="/login" className="text-decoration-none fw-bold">
+              Login
+            </Link>
+          </p>
+        </form>
+
+        {/* Divider */}
+        <div className="d-flex align-items-center my-3">
+          <hr className="flex-grow-1" />
+          <span className="mx-2 text-muted">OR</span>
+          <hr className="flex-grow-1" />
         </div>
-    );
+
+        {/* Google sign-up */}
+        <div className="text-center">
+          <GoogleLogin
+            onSuccess={async (credentialResponse) => {
+              try {
+                const response = await fetch(google_signup_url, {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                  },
+                  body: JSON.stringify({
+                    token: credentialResponse.credential,
+                  }),
+                });
+                const result = await response.json();
+                if (result.success) {
+                  localStorage.setItem("UserEmail", result.email);
+                  localStorage.setItem("authToken", result.authToken);
+                  navigate("/");
+                } else {
+                  alert("Google sign-up failed");
+                }
+              } catch (error) {
+                alert("Google sign-up error");
+              }
+            }}
+            onError={() => alert("Google sign-up failed")}
+          />
+        </div>
+      </div>
+    </div>
+  );
 }

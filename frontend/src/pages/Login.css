@@ -1,0 +1,26 @@
+.login-container {
+  background: linear-gradient(135deg, #f0f4ff, #dbeafe);
+}
+
+.login-card {
+  max-width: 400px;
+  width: 100%;
+  background: grey
+}
+
+.input-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #6c757d;
+}

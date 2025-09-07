@@ -8,10 +8,9 @@ import './Home.css'; // Updated home styles
 import searchItem from './search.png';
 import Carousel from '../components/Carousel';
 
-const HOME_URL = 'https://tasty-track-lyea.vercel.app/api/foodTypes';
-const Home_url = HOME_URL || 'http://localhost:5000/api/foodTypes';
-const SEARCH_URL = 'https://tasty-track-lyea.vercel.app/api/foodTypes/search';
-const Search_url = SEARCH_URL || 'http://localhost:5000/api/foodTypes/search';
+const FOOD_ITEMS_URL = 'http://localhost:5000/api/foodItems';
+const FOOD_TYPES_URL = 'http://localhost:5000/api/foodTypes';
+const SEARCH_URL = 'http://localhost:5000/api/foodTypes/search';
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -19,13 +18,28 @@ export default function Home() {
   const [foodItem, setFoodItem] = useState([]);
   const [filteredFoodItems, setFilteredFoodItems] = useState([]);
 
-  // Load initial data
+  // Load categories and food items
   useEffect(() => {
-    const loadData = async () => {
+    const fetchCategories = async () => {
       try {
-        const response = await fetch(Home_url, {
+        const response = await fetch(FOOD_TYPES_URL, {
           method: 'POST',
-          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+        });
+        const data = await response.json();
+        setFoodCat(data.foodCategory || []);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+
+    const fetchFoodItems = async () => {
+      try {
+        const response = await fetch(FOOD_ITEMS_URL, {
+          method: 'GET',
           headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
@@ -33,12 +47,13 @@ export default function Home() {
         });
         const data = await response.json();
         setFoodItem(data.foodItems || []);
-        setFoodCat(data.foodCategory || []);
       } catch (error) {
-        console.error('Error fetching food data:', error);
+        console.error('Error fetching food items:', error);
       }
     };
-    loadData();
+
+    fetchCategories();
+    fetchFoodItems();
   }, []);
 
   // Handle search submission
@@ -51,7 +66,7 @@ export default function Home() {
 
     try {
       console.log('searching for search item', searchTerm);
-      const response = await fetch(Search_url, {
+  const response = await fetch(SEARCH_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
