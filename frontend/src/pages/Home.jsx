@@ -8,6 +8,8 @@ import './Home.css'; // Updated home styles
 import searchItem from './search.png';
 import Carousel from '../components/Carousel';
 
+// dotenv.config();
+const vercel_home_url= process.env.REACT_APP_HOME;
 const FOOD_ITEMS_URL = 'http://localhost:5000/api/foodItems';
 const FOOD_TYPES_URL = 'http://localhost:5000/api/foodTypes';
 const SEARCH_URL = 'http://localhost:5000/api/foodTypes/search';
@@ -22,7 +24,7 @@ export default function Home() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch(FOOD_TYPES_URL, {
+        const response = await fetch(FOOD_TYPES_URL || vercel_home_url, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -88,7 +90,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div className="home-container">
+      <div className="home-container" style={{position:"absolute"}}>
         <Carousel />
 
         {/* Search Bar */}
@@ -109,24 +111,28 @@ export default function Home() {
         </section>
 
         {/* Category Section */}
-        <section className="category-section py-4">
-          <h2 className="text-center mb-3">Explore Categories</h2>
-          <div className="d-flex overflow-auto gap-3">
-            {foodCat.length > 0 ? (
-              foodCat.map((category) => (
-                <Link
-                  to={`/category/${category.categoryName.toLowerCase()}`}
-                  key={category._id}
-                  className="category-card text-decoration-none text-center p-3 bg-light rounded"
-                >
-                  {category.categoryName}
-                </Link>
-              ))
-            ) : (
-              <p className="text-muted text-center">No categories available.</p>
-            )}
-          </div>
-        </section>
+       <section className="category-section py-4">
+  <h2 className="text-center mb-3" style={{fontSize:"40px",color:"darkcyan"}}>Explore Categories</h2>
+  <div className="d-flex overflow-auto gap-3">
+    {foodCat.length > 0 ? (
+      foodCat.map((category, index) => (
+        <Link
+          to={`/category/${category.categoryName.toLowerCase()}`}
+          key={category._id}
+          className="category-card text-decoration-none text-center p-3 bg-light rounded"
+          style={{
+            animation: `fadeInUp 0.5s ease forwards`,
+            animationDelay: `${index * 0.1}s`,
+          }}
+        >
+          {category.categoryName}
+        </Link>
+      ))
+    ) : (
+      <p className="text-muted text-center">No categories available.</p>
+    )}
+  </div>
+</section>
 
         {/* Featured Items or Search Results */}
         <section className="items-section py-4">

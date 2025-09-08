@@ -4,8 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaEnvelope, FaLock, FaUser, FaHome, FaEye, FaEyeSlash } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Auth.css"; // shared styles for login/signup
+// import dotenv from 'dotenv'
+// dotenv.config();
 
-const local_signup_url = "http://localhost:5000/api/createUser";
+const vercel_signup_url = process.env.REACT_APP_SIGNUP;
+const local_signup_url = process.env.NODE_ENV==='production'? vercel_signup_url:"http://localhost:5000/api/sign-up";
 const google_signup_url = "http://localhost:5000/api/sign-up/google";
 
 export default function Signup() {
@@ -45,7 +48,7 @@ export default function Signup() {
 
     setIsLoading(true);
     try {
-      const response = await fetch(local_signup_url, {
+      const response = await fetch(((local_signup_url || vercel_signup_url)), {
         method: "POST",
         credentials: "include",
         headers: {
@@ -80,7 +83,7 @@ export default function Signup() {
   return (
     <div className="auth-container d-flex align-items-center justify-content-center vh-100">
       <div className="auth-card shadow-lg p-4 rounded">
-        <h2 className="text-center mb-4 fw-bold">Create Account ✨</h2>
+        <h2 className="text-center mb-4 fw-bold">Create Account</h2>
         <p className="text-center text-muted mb-4">
           Sign up and start using <strong>Tasty Track</strong>
         </p>

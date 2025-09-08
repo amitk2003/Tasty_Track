@@ -17,7 +17,7 @@ import MyOrder from './pages/MyOrder.jsx';
 import Cart from './pages/Cart.jsx';
 import Category from './pages/Category.jsx';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-const clientId='147388509959-8jrjarpd4uv8b5nr07s6uvjm0604d7ij.apps.googleusercontent.com'
+const clientId='81605854927-e1d3d3ran47jviuupem6737ccl8qefr5.apps.googleusercontent.com'
 function App() {
   return (
   

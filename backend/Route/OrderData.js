@@ -29,7 +29,7 @@ router.post('/OrderData', async (req, res) => {
             // Update existing order by pushing new data
             await Order_schema.findOneAndUpdate(
                 { email: email },
-                { $push: { order_data: order_data } }
+                { $push: { order_data:{$each : [order_data],$position:0} } }
             );
             return res.status(200).json({ success: true, message: "Order updated successfully" });
         }
@@ -44,12 +44,18 @@ router.post('/myOrderHistory', async(req,res)=>{
         if(!mydata){
             return res.status(404).json({message:"No order found"});
         }
-        res.json({orderHis:mydata})
+            // Sort order_data by Order_date in descending order (recent first)
+        const sortedOrders = mydata.order_data.sort((a, b) => {
+            return new Date(b.Order_date) - new Date(a.Order_date);
+        });
+                res.json({ orderHis: { ...mydata._doc, order_data: sortedOrders } });
+
     }catch(error){
         console.error("Error fetching order history:", error);
         res.status(500).json({ error: "Server error", message: error.message });
     }
 })
+
 
 
 

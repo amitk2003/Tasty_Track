@@ -1,8 +1,13 @@
 import React from 'react'
 import Delete from './delete.png'
+import {loadStripe} from '@stripe/stripe-js';  
 import { useCart, useDispatchCart } from '../components/ContextReducer';
-const CartUrl='https://tasty-track-lyea.vercel.app/api/OrderData';
-const cart_url=CartUrl || 'http://localhost:5000/api/OrderData';
+
+const cart_url = process.env.NODE_ENV === ('production'  || 'development')
+    ? 'https://tasty-track-lyea.vercel.app/api/OrderData' 
+    : 'http://localhost:5000/api/OrderData';
+
+
 export default function Cart() {
     let data = useCart();
     let dispatch = useDispatchCart();
@@ -17,7 +22,27 @@ export default function Cart() {
   //   console.log(index)
   //   dispatch({type:"REMOVE",index:index})
   // }
-
+const makePayment =async()=>{
+    const stripe= await loadStripe('pk_test_51S3x5MQngWTPUMBIdRrQrzMqb7pmJjJ1fHKENPXXZE8tINMxIGyFlqMwDlkeTY8M6NIOwgCgu7U53Uw9ZjVzvEle00gCEoSZ3V')
+    const body={
+        products:data
+    }
+    const headers={
+        'Content-Type':'application/json'
+    }
+    const response=await fetch('http://localhost:5000/api/make-payment',{
+        method:"POST",
+        headers:headers,
+        body:JSON.stringify(body)
+    })
+    const session=await response.json();
+    const result=stripe.redirectToCheckout({
+        sessionId:session.id
+    })
+    if(result.error){
+        alert(result.error.message);
+    }
+}
 const handleCheckOut = async () => {
     let userEmail = localStorage.getItem("UserEmail");
     // console.log(data,localStorage.getItem("userEmail"),new Date())
@@ -40,6 +65,7 @@ const handleCheckOut = async () => {
     });
     console.log("Order output", response)
     if (response.ok) {
+        makePayment();
     dispatch({ type: "DROP" });
     alert("order placed successfully");
     } else{
