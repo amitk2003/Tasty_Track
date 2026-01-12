@@ -1,0 +1,29 @@
+{
+  "name": "food_track",
+  "version": "1.0.0",
+  "description": "this is online food ordering app",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "ejs": "^3.1.10",
+    "express": "^4.22.1",
+    "express-validator": "^7.3.1",
+    "google-auth-library": "^10.5.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^8.20.4",
+    "nodemon": "^3.1.11",
+    "stripe": "^18.5.0",
+    "validator": "^13.15.26"
+  }
+}

@@ -1,0 +1,35 @@
+[
+    {
+        "categoryName":"Biryani/Rice"
+    },
+    {
+        "categoryName":"Non-Veg Items"
+    },
+    {
+        "categoryName":"Veg Items"
+    },
+    {
+        "categoryName":"Starter"
+    },
+    {
+        "categoryName":"Broasted chicken"
+    },
+    {
+        "categoryName":"Papad"
+    },
+    {
+        "categoryName":"Samosa"
+    }, {
+        "categoryName":"Pizza"
+    },
+
+    {
+        "categoryName":"Sweets"
+    },
+    {
+        "categoryName":"Ice-Cream"
+    },
+    {
+        "categoryName":"Cake"
+    }
+]
