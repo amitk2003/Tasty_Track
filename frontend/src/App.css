@@ -2,6 +2,7 @@
     height: 400px; /* Adjust the height as needed */
     object-fit: cover; /* Ensures the image retains its aspect ratio */
   }
+<<<<<<< HEAD
 /* Overlay */
 .modal-overlay {
   position: fixed;
@@ -81,3 +82,6 @@
     border-radius: 0;
   }
 }
+=======
+ 
+>>>>>>> e7fe165e83a180116e28f905b17ee634fca09d98

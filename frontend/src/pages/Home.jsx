@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; // Use for category links if using React Router
+
 import Navbar from '../components/Navbar/Navbar';
 import Card from '../components/Card/Card';
 import Footer from '../components/Footer/Footer';
 import './Home.css'; // Updated home styles
 import searchItem from './search.png';
 import Carousel from '../components/Carousel/Carousel';
-import api from '../api/axios.js';
+import api from '../api/axios.js'
+
 
 
 export default function Home() {
@@ -19,8 +21,10 @@ export default function Home() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
+
         const response = await api.post(`/api/foodTypes`, {
   
+
           headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
@@ -35,8 +39,10 @@ export default function Home() {
 
     const fetchFoodItems = async () => {
       try {
+
         const response = await api.get(`/api/foodItems`, {
         
+
           headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
@@ -65,6 +71,8 @@ export default function Home() {
       console.log('searching for search item', searchTerm);
   const response = await api.post(`/api/foodTypes/search`, {
        
+
+
         headers: {
           'Content-Type': 'application/json',
         },
@@ -132,7 +140,6 @@ export default function Home() {
     )}
   </div>
 </section>
-
 
         {/* Featured Items or Search Results */}
         <section className="items-section py-4">

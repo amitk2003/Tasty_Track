@@ -92,6 +92,7 @@
   transform: scale(5.05);
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
 }
+<<<<<<< HEAD
 
 
 .category-grid {
@@ -111,3 +112,5 @@
 .category-card:hover {
   transform: scale(1.05);
 }
+=======
+>>>>>>> e7fe165e83a180116e28f905b17ee634fca09d98

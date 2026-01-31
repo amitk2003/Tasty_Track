@@ -1,7 +1,11 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv'
 dotenv.config()
+<<<<<<< HEAD
 const Mongo_UrI=process.env.MONGO_URl;
+=======
+const Mongo_UrI=process.env.MONGO_URI;
+>>>>>>> e7fe165e83a180116e28f905b17ee634fca09d98
 console.log('Mongo_Url:', Mongo_UrI); 
 
 const connectDB = async () => {

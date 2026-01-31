@@ -13,6 +13,7 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
+<<<<<<< HEAD
     "body-parser": "^1.20.4",
     "cors": "^2.8.5",
     "dotenv": "^16.6.1",
@@ -25,5 +26,19 @@
     "nodemon": "^3.1.11",
     "stripe": "^18.5.0",
     "validator": "^13.15.26"
+=======
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "express-validator": "^7.2.0",
+    "google-auth-library": "^10.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.6.2",
+    "nodemon": "^3.1.4",
+    "stripe": "^18.5.0",
+    "validator": "^13.12.0"
+>>>>>>> e7fe165e83a180116e28f905b17ee634fca09d98
   }
 }
