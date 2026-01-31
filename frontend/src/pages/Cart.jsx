@@ -2,10 +2,10 @@ import React from 'react'
 import Delete from './delete.png'
 import {loadStripe} from '@stripe/stripe-js';  
 import { useCart,useDispatchCart } from '../components/context/ContextReducer.jsx';
-
-const cart_url = process.env.NODE_ENV === ('production'  || 'development')
-    ? 'https://tasty-track-lyea.vercel.app/api/OrderData' 
-    : 'http://localhost:5000/api/OrderData';
+import api  from '../api/axios.js'
+// const cart_url = process.env.NODE_ENV === ('production'  || 'development')
+//     ? 'https://tasty-track-lyea.vercel.app/api/OrderData' 
+//     : 'http://localhost:5000/api/OrderData';
 
 
 export default function Cart() {
@@ -30,8 +30,7 @@ const makePayment =async()=>{
     const headers={
         'Content-Type':'application/json'
     }
-    const response=await fetch('http://localhost:5000/api/make-payment',{
-        method:"POST",
+    const response=await api.get('/api/make-payment',{
         headers:headers,
         body:JSON.stringify(body)
     })

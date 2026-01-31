@@ -3,13 +3,13 @@ import Navbar from '../components/Navbar/Navbar.jsx';
 import Footer from '../components/Footer/Footer.jsx';
 const order_history= process.env.REACT_APP_ORDER_HISTORY;
 const Order_history_url = process.env.NODE_ENV===('production' || 'development' ) ?order_history : 'http://localhost:5000/api/myOrderHistory';
+import api from '../api/axios.js';
 export default function MyOrder() {
   const [orderData, setOrderData] = useState("");
 
   const fetchMyHistory = async () => {
     try {
-      const response = await fetch(Order_history_url, {
-        method: 'POST',
+      const response = await api.post(`/api/myOrderHistory`, {
         credentials:'include',
         headers: {
           'Content-Type': 'application/json',

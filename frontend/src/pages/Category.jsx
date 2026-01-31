@@ -3,8 +3,9 @@ import { useParams } from 'react-router-dom';
 import Card from '../components/Card/Card.jsx';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
+import api from '../api/axios.js';
 
-const FOOD_ITEMS_URL = 'http://localhost:5000/api/foodItems';
+// const FOOD_ITEMS_URL = 'http://localhost:5000/api/foodItems';
 
 export default function Category() {
   const { category } = useParams();
@@ -13,8 +14,7 @@ export default function Category() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await fetch(FOOD_ITEMS_URL, {
-          method: 'GET',
+        const response = await api.get(`/api/foodItems`,{
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         });
         const data = await response.json();

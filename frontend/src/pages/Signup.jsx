@@ -6,10 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Auth.css"; // shared styles for login/signup
 // import dotenv from 'dotenv'
 // dotenv.config();
+import api from "../api/axios";
 
-const vercel_signup_url = process.env.REACT_APP_SIGNUP;
-const local_signup_url = process.env.NODE_ENV==='production'? vercel_signup_url:"http://localhost:5000/api/sign-up";
-const google_signup_url = "http://localhost:5000/api/sign-up/google";
 
 export default function Signup() {
   const [credentials, setCredentials] = useState({
@@ -48,8 +46,8 @@ export default function Signup() {
 
     setIsLoading(true);
     try {
-      const response = await fetch(((local_signup_url || vercel_signup_url)), {
-        method: "POST",
+      const response = await api.post(`/api/sign-up`, {
+       
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
@@ -179,8 +177,8 @@ export default function Signup() {
           <GoogleLogin
             onSuccess={async (credentialResponse) => {
               try {
-                const response = await fetch(google_signup_url, {
-                  method: "POST",
+                const response = await api.post(`/api/sign-up/google`, {
+                
                   headers: {
                     "Content-Type": "application/json",
                     Accept: "application/json",

@@ -6,12 +6,8 @@ import Footer from '../components/Footer/Footer';
 import './Home.css'; // Updated home styles
 import searchItem from './search.png';
 import Carousel from '../components/Carousel/Carousel';
+import api from '../api/axios.js';
 
-// dotenv.config();
-const vercel_home_url= process.env.REACT_APP_HOME;
-const FOOD_ITEMS_URL = 'http://localhost:5000/api/foodItems';
-const FOOD_TYPES_URL = 'http://localhost:5000/api/foodTypes';
-const SEARCH_URL = 'http://localhost:5000/api/foodTypes/search';
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -23,8 +19,8 @@ export default function Home() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch(FOOD_TYPES_URL || vercel_home_url, {
-          method: 'POST',
+        const response = await api.post(`/api/foodTypes`, {
+  
           headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
@@ -39,8 +35,8 @@ export default function Home() {
 
     const fetchFoodItems = async () => {
       try {
-        const response = await fetch(FOOD_ITEMS_URL, {
-          method: 'GET',
+        const response = await api.get(`/api/foodItems`, {
+        
           headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
@@ -67,8 +63,8 @@ export default function Home() {
 
     try {
       console.log('searching for search item', searchTerm);
-  const response = await fetch(SEARCH_URL, {
-        method: 'POST',
+  const response = await api.post(`/api/foodTypes/search`, {
+       
         headers: {
           'Content-Type': 'application/json',
         },

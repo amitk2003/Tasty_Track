@@ -4,14 +4,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Login.css"; // we'll add some extra CSS here
+import api from "../api/axios";
 // import dotenv from 'dotenv'
 // dotenv.config();
-const vercel_login_url= process.env.REACT_APP_LOGIN;
+
 // const GoogleLogin_url="http://localhost:5000/api/sign-in/google";
 
 
 // process.env.NODE_ENV === ('production' || 'development')?vercel_login_url:
-const login_url = "http://localhost:5000/api/sign-in";
+// const login_url = "http://localhost:5000/api/sign-in";
 
 
 export default function Login() {
@@ -26,8 +27,8 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch((login_url ), {
-        method: "POST",
+      const response = await api.post(`/api/sign-in`, {
+       
         credentials: "include",
         headers: {
           "Content-Type": "application/json",

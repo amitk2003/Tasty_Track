@@ -17,7 +17,7 @@ connectDB();
 
 // Define allowed origins
 const allowedOrigins = [
-  'http://localhost:3000'
+  'http://localhost:3000','https://tasty-track-six.vercel.app/','https://tasty-track-5u3k.onrender.com'
   // 'https://tasty-track-a4a7.vercel.app',  // Remove trailing slash
   // 'https://tasty-track-lyea.vercel.app'   // Add backend URL to allowed origins
 ];
