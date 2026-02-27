@@ -1,6 +1,8 @@
 
 import './App.css';
 // import Footer from './components/Footer';
+import dotenv from 'dotenv';
+dotenv.config();
 import Home from './pages/Home';
 import {
   BrowserRouter as Router,
@@ -12,11 +14,7 @@ import '../node_modules/bootstrap-dark-5/dist/css/bootstrap-dark.min.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'
 import Signup from './pages/Signup.jsx';
-<<<<<<< HEAD
-import {CartProvider} from '../src/components/context/ContextReducer.jsx'
-=======
-import { CartProvider } from './components/ContextReducer.jsx';
->>>>>>> e7fe165e83a180116e28f905b17ee634fca09d98
+import { CartProvider } from './components/context/ContextReducer.jsx';
 import MyOrder from './pages/MyOrder.jsx';
 import Cart from './pages/Cart.jsx';
 import Category from './pages/Category.jsx';
